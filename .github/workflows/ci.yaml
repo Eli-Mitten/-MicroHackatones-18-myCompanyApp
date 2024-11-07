@@ -1,0 +1,28 @@
+name: App Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: InfraConfig
+        uses: Eli-Mitten/MicroHackatones-18-actions-InfraConfig/actions/InfraConfig@main
+
+      - name: Build
+        run: echo "Building"
+
+      - name: Deploy
+        run: echo "Deploying"
+
+      - name: Test
+        uses: Eli-Mitten/17_custom_actions/Tests@main
+        with:
+          param1: 'test-param1'
+          param2: 'test-param2'
